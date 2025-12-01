@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const auth = require('../middleware/auth');
+const doctorsController = require('../controllers/doctorsController');
+router.get('/specialties', doctorsController.getSpecialties);
+router.get('/', doctorsController.listDoctors);
+router.get('/:id/availability', doctorsController.getAvailability);
+router.post('/', auth, doctorsController.createDoctor);
+router.put('/:id', auth, doctorsController.updateDoctor);
+module.exports = router;
